@@ -1,5 +1,8 @@
-var SimpleStorage = artifacts.require("./SimpleStorage.sol");
+var MyToken = artifacts.require("./MyToken.sol");
+var MyTokenSale = artifacts.require("./MyTokenSale.sol");
 
-module.exports = function(deployer) {
-  deployer.deploy(SimpleStorage);
-};
+module.exports = async function(deployer) {
+    let addr = await web3.eth.getAccounts();
+    await deployer.deploy(MyToken, 1000000);
+    await deployer.deploy(MyTokenSale, 1, addr[0], MyToken.address);
+}
