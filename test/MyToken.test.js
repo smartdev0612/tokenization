@@ -1,13 +1,7 @@
 const Token = artifacts.require("MyToken");
 
-var chai = require("chai");
+const chai = require("./setupchai.js");
 const BN = web3.utils.BN;
-const chaiBN = require("chai-bn")(BN);
-chai.use(chaiBN);
-
-var chaiAsPromised = require("chai-as-promised");
-const { contracts_build_directory } = require("../truffle-config");
-chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 require("dotenv").config({path: "../.env"});
@@ -17,7 +11,7 @@ contract("Token Test", async (accounts) => {
 
     beforeEach(async () => {
         this.myToken = await Token.new(process.env.INITIAL_TOKENS);
-    })
+    });
 
     it("all tokens should be in my account", async () => {
         let instance = this.myToken;
