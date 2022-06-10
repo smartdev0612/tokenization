@@ -15,9 +15,27 @@ module.exports = {
     },
     ganache_local: {
       provider: function() {
-        return new HDWalletProvider(process.env.MNEMONIC, "http://127.0.0.1:8545", AccountIndex)
+        return new HDWalletProvider(process.env.GANACHE_MNEMONIC, "http://127.0.0.1:8545", AccountIndex)
       },
       network_id: 5777
+    },
+    kovan_infura: {
+      provider: function() {
+        return new HDWalletProvider(process.env.METAMASK_MNEMONIC, "https://kovan.infura.io/v3/4badaf12963a4dd28d67d5a57e71a75f", AccountIndex)
+      },
+      network_id: 42
+    },
+    ropsten_infura: {
+      provider: function() {
+        return new HDWalletProvider(process.env.METAMASK_MNEMONIC, "https://ropsten.infura.io/v3/4badaf12963a4dd28d67d5a57e71a75f", AccountIndex)
+      },
+      network_id: 3
+    },
+    rinkeby_infura: {
+      provider: function() {
+        return new HDWalletProvider(process.env.METAMASK_MNEMONIC, "https://rinkeby.infura.io/v3/4badaf12963a4dd28d67d5a57e71a75f", AccountIndex)
+      },
+      network_id: 4
     }
   },
   compilers: {
