@@ -16,7 +16,7 @@ class App extends Component {
 
       // Use web3 to get the user's accounts.
       this.accounts = await this.web3.eth.getAccounts();
-
+      
       // Get the contract instance.
       this.networkId = await this.web3.eth.net.getId();
       this.tokenInstance = new this.web3.eth.Contract(
@@ -56,8 +56,8 @@ class App extends Component {
   }
 
   handleKycWhitelisting = async (event) => {
-    await this.kycInstance.setKycCompleted(this.state.kycAddress).send({from: this.accounts[0]});
-    alert("KYC for " + this.state.kycAddress + " is comp")
+    await this.kycInstance.methods.setKycCompleted(this.state.kycAddress).send({from: this.accounts[0]});
+    alert("KYC for " + this.state.kycAddress + " is completed");
   }
 
   render() {
